@@ -12,12 +12,19 @@ import Spacer from "../../components/Spacer";
 import { Link } from "expo-router";
 import { Colors } from "../../constants/Colors";
 import { useState } from "react";
+import { useUser } from "../../hooks/useUser";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState();
-  const handleSubmit = () => {
-    console.log("Register form submitted", email, password);
+  const { user, register } = useUser();
+
+  const handleSubmit = async () => {
+    try {
+      await register(email, password)
+    } catch(error) {
+
+    }
   };
 
   return (

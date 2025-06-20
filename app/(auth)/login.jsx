@@ -13,13 +13,17 @@ import Spacer from "../../components/Spacer";
 import { Link } from "expo-router";
 import { Colors } from "../../constants/Colors";
 import { useState } from "react";
+import { useUser } from "../../hooks/useUser";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const { user, login } = useUser();
 
-  const handleSubmit = () => {
-    console.log("Login form submitted:", email, password);
+  const handleSubmit = async () => {
+    try {
+      await login(email, password);
+    } catch (error) {}
   };
 
   return (

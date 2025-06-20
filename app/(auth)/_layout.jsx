@@ -1,8 +1,10 @@
 import { StatusBar } from "expo-status-bar";
-import ThemedView from "../../components/ThemedView";
 import { Stack } from "expo-router";
+import { useUser } from "../../hooks/useUser";
 
 export default function AuthLayout() {
+  const { user } = useUser();
+  console.log(user);
   return (
     <>
       <StatusBar />
